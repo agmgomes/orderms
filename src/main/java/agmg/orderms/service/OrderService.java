@@ -51,16 +51,20 @@ public class OrderService {
     }
 
     public CustomerOrdersResponse getListOrders(Long customerId) {
+        logger.info("Fetching list orders for costumer: {}", customerId);
 
         List<Order> orders = this.orderRepository.findByCustomerId(customerId);
 
         if(orders.isEmpty()){
+            logger.warn("No customer found for id: {}", customerId);
             throw new CustomerIdNotFound(customerId);
         }
 
         List<OrderWithoutCustomerId> orderList = orders.stream()
                 .map( order -> new OrderWithoutCustomerId(order.getOrderId(), order.getItems(), order.getTotal()))
                 .collect(Collectors.toList());
+
+        logger.info("Orders list returned with success for customer id: {}", customerId);
 
         return new CustomerOrdersResponse(customerId, orderList);
     }
