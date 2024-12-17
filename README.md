@@ -88,11 +88,11 @@ payload:
 
 ```json
 {
-	"customerId": 3,
+    "customerId": 3,
     "items":[
         {
-		    "product": "paper",
-			"quantity": 3,
+            "product": "paper",
+            "quantity": 3,
             "price": 2.44
         },
         {
@@ -118,11 +118,11 @@ To submit an order using the API, send a `POST`request to `orders/send` with the
 following JSON body:
 ```json
 {
-	"customerId": 1,
+    "customerId": 1,
     "items":[
         {
-		    "product": "pencil",
-			"quantity": 3,
+            "product": "pencil",
+            "quantity": 3,
             "price": 1.25
         }
     ]
